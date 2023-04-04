@@ -5,7 +5,8 @@ export default class Button extends Component {
         super()
         this.state = {
             count: 0,
-            disabled: ""
+            disabled: "",
+            message: ""
         }
     }
     incrCount() {
@@ -14,7 +15,8 @@ export default class Button extends Component {
         }, () => {
             if (this.state.count >= 5) {
                 this.setState({
-                    disabled: "disabled"
+                    disabled: "disabled",
+                    message: "You Win"
                 })
             }
         })
@@ -22,7 +24,8 @@ export default class Button extends Component {
     resetCount() {
         this.setState({
             count: 0,
-            disabled: ""
+            disabled: "",
+            message: ""
         })
     }
     render() {
@@ -37,6 +40,9 @@ export default class Button extends Component {
                     <button className="btn btn-primary mx-2" onClick={() => this.incrCount()} disabled={this.state.disabled}>Counter</button>
                     <button className="btn btn-danger mx-2" onClick={() => this.resetCount()}>Reset</button>
                 </div>
+                <p style={{ color: "red" }}>
+                    {this.state.message}
+                </p>
             </div>
         )
     }
